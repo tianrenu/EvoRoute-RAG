@@ -1,0 +1,225 @@
+# ============================================================
+# 校园场景同义词词典 v1.1
+# ============================================================
+#
+# 治理字段说明：
+#   domain: 应用场景限定（general = 通用）
+#   confidence: 1.0 = 高度确定等价，0.8 = 口语变体，0.7 = 弱相关
+#   direction: both = 双向等价，forward = 单向（key → synonyms 成立，反之不保证）
+#
+# v1.0 flat格式已废弃，请勿混用
+# ============================================================
+
+dict:
+  学校:
+    synonyms:
+    - 校园
+    - 高校
+    - 学府
+    - 本校
+    - 我校
+    domain: general
+    confidence: 1.0
+    direction: both
+    note: 母校/校区暂不加，语境依赖强
+  图书馆:
+    synonyms:
+    - 图书室
+    - 借阅室
+    - 图书馆官网
+    domain: general
+    confidence: 1.0
+    direction: both
+    note: 图使馆为常见拼写错误
+  食堂:
+    synonyms:
+    - 餐厅
+    - 饭堂
+    - 就餐点
+    - 用餐区
+    - 饭点
+    domain: general
+    confidence: 1.0
+    direction: both
+  宿舍:
+    synonyms:
+    - 寝室
+    - 学生公寓
+    - 宿舍楼
+    domain: general
+    confidence: 1.0
+    direction: both
+  教学楼:
+    synonyms:
+    - 授课楼
+    - 上课楼
+    domain: general
+    confidence: 0.8
+    direction: forward
+    note: 主教/北教/南教依赖具体命名
+  体育馆:
+    synonyms:
+    - 体育场
+    - 操场
+    - 运动场
+    - 球场
+    domain: general
+    confidence: 0.8
+    direction: forward
+    note: 球场语义过广
+  校园卡:
+    synonyms:
+    - 一卡通
+    - 饭卡
+    - 就餐卡
+    domain: general
+    confidence: 1.0
+    direction: both
+    note: 卡单独一字过于宽泛，不加入
+  充值:
+    synonyms:
+    - 圈存
+    domain: 校园卡
+    confidence: 1.0
+    direction: both
+    note: 充值有歧义，限定为校园卡场景
+  选课:
+    synonyms:
+    - 补选
+    - 退选
+    - 抢课
+    - 调课
+    - 选课系统
+    domain: general
+    confidence: 1.0
+    direction: both
+  成绩:
+    synonyms:
+    - 分数
+    - 得分
+    domain: general
+    confidence: 1.0
+    direction: both
+    note: GPA/绩点/学分是独立度量，通过独立skill覆盖
+  成绩复核:
+    synonyms:
+    - 成绩申诉
+    - 分数复查
+    - 成绩异议
+    - 改分
+    domain: general
+    confidence: 1.0
+    direction: both
+  GPA:
+    synonyms:
+    - 绩点
+    - 学分绩
+    - 平均绩点
+    domain: general
+    confidence: 1.0
+    direction: both
+  奖学金:
+    synonyms:
+    - 奖学金评选
+    - 奖学金申请
+    domain: general
+    confidence: 0.9
+    direction: forward
+    note: 助学金是独立概念，不混入
+  助学金:
+    synonyms:
+    - 困难补助
+    - 生活补助
+    domain: general
+    confidence: 1.0
+    direction: both
+  助学贷款:
+    synonyms:
+    - 生源地贷款
+    - 国家助学贷款
+    domain: general
+    confidence: 1.0
+    direction: both
+  保研:
+    synonyms:
+    - 推免
+    - 保研资格
+    - 推免条件
+    - 保研名额
+    - 免试研究生
+    domain: general
+    confidence: 1.0
+    direction: both
+  贫困生:
+    synonyms:
+    - 困难生
+    - 家庭经济困难
+    - 贫困认定
+    domain: general
+    confidence: 1.0
+    direction: both
+  借书:
+    synonyms:
+    - 借阅
+    - 图书借阅
+    - 借书手续
+    domain: general
+    confidence: 1.0
+    direction: both
+  超期:
+    synonyms:
+    - 逾期
+    - 过期
+    - 过期了
+    domain: general
+    confidence: 1.0
+    direction: both
+  归还:
+    synonyms:
+    - 还书
+    - 图书归还
+    - 还书手续
+    domain: general
+    confidence: 1.0
+    direction: both
+  罚款:
+    synonyms:
+    - 罚金
+    - 超期费
+    domain: general
+    confidence: 0.8
+    direction: forward
+    note: 罚则语义更广，暂不加
+  请假:
+    synonyms:
+    - 请假条
+    - 请假申请
+    domain: general
+    confidence: 1.0
+    direction: both
+  离校:
+    synonyms:
+    - 出校
+    - 外出
+    - 离校申请
+    - 离校手续
+    domain: general
+    confidence: 1.0
+    direction: both
+  考试:
+    synonyms:
+    - 期末考试
+    - 补考
+    - 缓考
+    domain: general
+    confidence: 0.9
+    direction: forward
+    note: 期中语义独立，暂不加
+  转专业:
+    synonyms:
+    - 换专业
+    - 专业调整
+    - 转系
+    domain: general
+    confidence: 1.0
+    direction: both

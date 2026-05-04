@@ -1,0 +1,45 @@
+action:
+  retrieval:
+    boost_keywords:
+    - 助学贷款条件
+    - 贷款申请资格
+    - 生源地贷款
+    - 校园地贷款
+    filter_metadata:
+      category: financial_aid
+      school_year: current
+    top_k: 8
+answer_template: null
+answer_type: directive
+created_at: 2026-04-10
+evolution:
+  depends_on: []
+  false_positive_count: 0
+  hit_count: 50
+  last_evolution_time: null
+  success_rate: 0.85
+id: financial_aid_qualification_001
+match_threshold: 0.25
+name: 助学贷款申请资格
+semantic_profile:
+  applicable_scenarios:
+  - 学生需要了解助学贷款申请资格和流程
+  example_queries:
+  - 助学贷款需要什么条件
+  - 怎么申请国家助学贷款
+  response_guidelines: 列出资格条件，区分生源地和校园地贷款
+status: active
+trigger:
+  aliases:
+  - 助学贷款怎么申请
+  - 贷款条件
+  confidence_boost: 0.1
+  keywords:
+  - 助学贷款
+  - 贷款申请
+  - 生源地贷款
+  - 国家助学贷款
+  - 贷款资格
+  question_type: 资格判断类
+  semantic_type: qualification_query
+version: 1

@@ -1,0 +1,74 @@
+action:
+  retrieval:
+    boost_keywords:
+    - GPA计算
+    - 绩点换算
+    - 学分绩点
+    filter_metadata:
+      category: academic
+      school_year: current
+    top_k: 5
+answer_template: 'GPA（平均学分绩点）计算方法：
+
+  GPA = Σ(课程绩点 × 课程学分) / Σ(课程学分)
+
+
+  百分制与绩点对照表：
+
+  - 90-100 分 → 4.0
+
+  - 85-89 分 → 3.7
+
+  - 82-84 分 → 3.3
+
+  - 78-81 分 → 3.0
+
+  - 75-77 分 → 2.7
+
+  - 72-74 分 → 2.3
+
+  - 68-71 分 → 2.0
+
+  - 64-67 分 → 1.5
+
+  - 60-63 分 → 1.0
+
+  - 60 分以下 → 0
+
+
+  具体换算标准以学校教务系统为准。
+
+  '
+answer_type: template
+created_at: 2026-04-10
+evolution:
+  depends_on: []
+  false_positive_count: 0
+  hit_count: 50
+  last_evolution_time: null
+  success_rate: 0.85
+id: gpa_calculation_001
+match_threshold: 0.25
+name: GPA绩点计算方法
+semantic_profile:
+  applicable_scenarios:
+  - 学生需要计算自己的GPA
+  example_queries:
+  - GPA怎么计算
+  - 绩点换算方法是什么
+  response_guidelines: 给出公式和对照表
+status: active
+trigger:
+  aliases:
+  - 绩点怎么算
+  - 平均学分绩点
+  confidence_boost: 0.1
+  keywords:
+  - GPA
+  - 绩点
+  - 绩点计算
+  - 学分绩
+  - 成绩换算
+  question_type: 数值计算类
+  semantic_type: calculation_query
+version: 1

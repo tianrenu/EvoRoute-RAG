@@ -1,0 +1,64 @@
+action:
+  retrieval:
+    boost_keywords:
+    - 成绩复核
+    - 成绩申诉
+    - 复核流程
+    filter_metadata:
+      category: academic
+      school_year: current
+    top_k: 5
+answer_template: '成绩复核申请流程：
+
+  1. 时间要求：成绩公布后5个工作日内提出申请
+
+  2. 填写《成绩复核申请表》（教务处官网下载）
+
+  3. 提交至所在学院教务办公室
+
+  4. 学院转交任课教师复核
+
+  5. 复核结果在3个工作日内反馈
+
+  注意事项：
+
+  - 复核范围仅限漏判、错判、漏登、错登
+
+  - 不接受对评分标准的异议
+
+  - 每门课程仅可申请一次复核
+
+  '
+answer_type: template
+created_at: 2026-04-10
+evolution:
+  depends_on: []
+  false_positive_count: 0
+  hit_count: 50
+  last_evolution_time: null
+  success_rate: 0.85
+id: grade_appeal_001
+match_threshold: 0.25
+name: 成绩复核申请流程
+semantic_profile:
+  applicable_scenarios:
+  - 学生认为成绩有误需要申请复核
+  example_queries:
+  - 对成绩有异议怎么申诉
+  - 成绩复核流程是什么
+  response_guidelines: 说明时间限制和具体步骤
+status: active
+trigger:
+  aliases:
+  - 成绩有问题怎么办
+  - 申请复查成绩
+  confidence_boost: 0.1
+  keywords:
+  - 成绩复核
+  - 成绩申诉
+  - 分数复查
+  - 成绩异议
+  - 改分
+  question_type: 流程指引类
+  semantic_type: procedure_query
+version: 1

@@ -1,0 +1,55 @@
+action:
+  retrieval:
+    boost_keywords:
+    - 图书馆开放时间
+    - 图书馆作息
+    filter_metadata:
+      category: library
+      school_year: current
+    top_k: 3
+answer_template: '图书馆开放时间如下：
+
+  - 周一至周五：8:00 - 22:00
+
+  - 周六、周日：9:00 - 21:00
+
+  - 法定节假日：10:00 - 18:00
+
+  - 考试周延长至 23:00
+
+  如有临时调整，请关注图书馆官方公告。
+
+  '
+answer_type: template
+created_at: 2026-04-10
+evolution:
+  depends_on: []
+  false_positive_count: 0
+  hit_count: 50
+  last_evolution_time: null
+  success_rate: 0.85
+id: library_hours_001
+match_threshold: 0.25
+name: 图书馆开放时间查询
+semantic_profile:
+  applicable_scenarios:
+  - 学生想去图书馆自习需要确认时间
+  example_queries:
+  - 图书馆什么时候开门
+  - 图书馆周末开放吗
+  response_guidelines: 直接给出具体时间段
+status: active
+trigger:
+  aliases:
+  - 图书馆几点开门
+  - 图书馆几点关门
+  confidence_boost: 0.1
+  keywords:
+  - 图书馆
+  - 开放时间
+  - 开馆
+  - 闭馆
+  - 营业时间
+  question_type: 事实查询类
+  semantic_type: fact_query
+version: 1

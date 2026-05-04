@@ -1,0 +1,56 @@
+action:
+  retrieval:
+    boost_keywords:
+    - 校园卡充值
+    - 一卡通
+    - 充值方式
+    filter_metadata:
+      category: campus_life
+      school_year: current
+    top_k: 3
+answer_template: '校园卡充值方式：
+
+  1. 微信/支付宝充值：关注学校一卡通公众号，绑定校园卡后在线充值
+
+  2. 自助充值机：食堂入口处、图书馆一楼均有自助充值终端
+
+  3. 一卡通服务中心：行政楼一楼，工作时间 8:30-17:00
+
+  4. 银行卡自动转账：绑定银行卡后设置自动充值（余额低于20元自动充100元）
+
+  充值到账时间：在线充值即时到账，需在终端上刷卡领取。
+
+  '
+answer_type: template
+created_at: 2026-04-10
+evolution:
+  depends_on: []
+  false_positive_count: 0
+  hit_count: 50
+  last_evolution_time: null
+  success_rate: 0.85
+id: campus_card_topup_001
+match_threshold: 0.25
+name: 校园卡充值方法
+semantic_profile:
+  applicable_scenarios:
+  - 学生需要给校园卡充值
+  example_queries:
+  - 校园卡怎么充值
+  - 一卡通在哪里充值
+  response_guidelines: 列出所有充值方式
+status: active
+trigger:
+  aliases:
+  - 校园卡怎么充值
+  - 饭卡充值
+  confidence_boost: 0.1
+  keywords:
+  - 校园卡
+  - 充值
+  - 一卡通
+  - 饭卡
+  - 校园卡余额
+  question_type: 事实查询类
+  semantic_type: fact_query
+version: 1

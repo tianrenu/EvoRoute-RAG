@@ -1,0 +1,56 @@
+action:
+  retrieval:
+    boost_keywords:
+    - 图书馆借阅规则
+    - 超期处理办法
+    filter_metadata:
+      category: library
+      school_year: current
+    top_k: 5
+answer_template: '图书馆借书超期处理流程如下：
+
+  1. 登录图书馆官网或微信小程序
+
+  2. 进入"我的借阅"查看超期书籍
+
+  3. 按超期天数缴纳罚款（0.1元/天/本）
+
+  4. 缴纳完成后即可恢复借阅权限
+
+  '
+answer_type: template
+created_at: 2026-04-10
+evolution:
+  depends_on: []
+  false_positive_count: 0
+  hit_count: 50
+  last_evolution_time: null
+  success_rate: 0.85
+id: library_overdue_001
+match_threshold: 0.25
+name: 图书馆借书超期处理
+semantic_profile:
+  applicable_scenarios:
+  - 学生归还图书时发现已超期
+  example_queries:
+  - 借书超期了怎么办
+  - 图书馆超期罚款标准
+  response_guidelines: 简洁明了，直接给出处理步骤
+status: active
+trigger:
+  aliases:
+  - 借阅图书
+  - 图书归还
+  - 超期
+  - 罚款
+  - 逾期
+  confidence_boost: 0.1
+  keywords:
+  - 借书
+  - 超期
+  - 罚款
+  - 归还
+  - 借阅
+  question_type: 流程指引类
+  semantic_type: procedure_query
+version: 1

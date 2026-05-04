@@ -1,0 +1,56 @@
+action:
+  retrieval:
+    boost_keywords:
+    - 奖学金申请
+    - 奖学金时间
+    - 奖学金评选
+    filter_metadata:
+      category: scholarship
+      school_year: current
+    top_k: 5
+answer_template: '主要奖学金申请时间安排：
+
+  1. 国家奖学金：每年9月中旬开始申报，10月中旬截止
+
+  2. 国家励志奖学金：每年9月中旬开始，10月底截止
+
+  3. 校级优秀学生奖学金：每学期末评选，次学期初公示
+
+  4. 社会奖学金：根据捐赠方要求，一般在每年3-4月或9-10月
+
+  具体时间以学校教务处通知为准。
+
+  '
+answer_type: template
+created_at: 2026-04-10
+evolution:
+  depends_on: []
+  false_positive_count: 0
+  hit_count: 50
+  last_evolution_time: null
+  success_rate: 0.85
+id: scholarship_time_001
+match_threshold: 0.25
+name: 奖学金申请时间查询
+semantic_profile:
+  applicable_scenarios:
+  - 学生想了解各类奖学金的申请时间节点
+  example_queries:
+  - 奖学金什么时候可以申请
+  - 国家奖学金申请截止日期
+  response_guidelines: 列出主要奖学金类型及对应时间
+status: active
+trigger:
+  aliases:
+  - 奖学金什么时候申请
+  - 奖学金申报时间
+  confidence_boost: 0.1
+  keywords:
+  - 奖学金
+  - 申请时间
+  - 评选
+  - 申报
+  - 奖学金截止
+  question_type: 事实查询类
+  semantic_type: fact_query
+version: 1

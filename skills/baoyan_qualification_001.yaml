@@ -1,0 +1,45 @@
+action:
+  retrieval:
+    boost_keywords:
+    - 保研资格
+    - 推免条件
+    - 推免名额分配
+    - 学业成绩要求
+    filter_metadata:
+      category: postgraduate
+      school_year: current
+    top_k: 8
+answer_template: null
+answer_type: directive
+created_at: 2026-04-10
+evolution:
+  depends_on: []
+  false_positive_count: 0
+  hit_count: 50
+  last_evolution_time: null
+  success_rate: 0.85
+id: baoyan_qualification_001
+match_threshold: 0.25
+name: 保研资格条件查询
+semantic_profile:
+  applicable_scenarios:
+  - 学生想了解是否具备保研资格
+  example_queries:
+  - 保研需要什么条件
+  - 推免资格怎么获得
+  response_guidelines: 列出核心条件，提示以学院通知为准
+status: active
+trigger:
+  aliases:
+  - 保送研究生
+  - 推荐免试
+  confidence_boost: 0.1
+  keywords:
+  - 保研
+  - 推免
+  - 保研资格
+  - 推免条件
+  - 保研名额
+  question_type: 资格判断类
+  semantic_type: qualification_query
+version: 1
