@@ -16,11 +16,16 @@ export LLM_API_BASE="https://api.minimaxi.com/v1"
 ## 任务
 根据设计书生成 L2 Agentic RAG 完整代码，写入 `evoroute_rag/layer2/` 目录。
 
+## Embedding 配置（阿里云 DashScope）
+**模型：** text-embedding-v4
+**API Key：** sk-11771b5d15ab4093862ecac35bcaa0c6
+**Base URL：** https://dashscope.aliyuncs.com/compatible-mode/v1
+
 ## L2 规格要点（来自设计书）
 
 ### 技术栈
 - **状态图编排**：LangGraph
-- **向量检索**：Qdrant（OpenAI兼容embedding，512维）
+- **向量检索**：Qdrant（阿里云 DashScope text-embedding-v4，1536维）
 - **LLM**：MiniMax API（OpenAI兼容格式）
 - **Python**：>= 3.10
 
@@ -56,7 +61,7 @@ def router_node(state: AgenticRAGState) -> AgenticRAGState:
 ```python
 def retriever_node(state: AgenticRAGState) -> AgenticRAGState:
     # 读取 state["skill_config"] 中的 retrieval 配置（boost_keywords, filter_metadata, top_k）
-    # 执行 Qdrant 检索（使用 MiniMax text-embedding-v1）
+    # 执行 Qdrant 检索（使用阿里云 DashScope text-embedding-v4）
     # 计算 S, M, A, C 四维指标
     # 如 reretrieve_count > 0，调整 query 重检（可选）
 ```
@@ -100,7 +105,7 @@ def generator_node(state: AgenticRAGState) -> AgenticRAGState:
 
 ### Qdrant 配置
 ```python
-# Collection: campus_knowledge, 512维, COSINE距离
+# Collection: campus_knowledge, 1536维, COSINE距离
 # Metadata字段: category, school_year, source, last_updated, school_id
 # 检索时支持 top_k 和 score_threshold 过滤
 ```
