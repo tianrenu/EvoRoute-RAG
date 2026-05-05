@@ -368,3 +368,66 @@ class TestLLMClient:
         assert result == "ok"
         assert cb.state == CircuitState.CLOSED
         assert cb.failure_count == 0
+
+
+class TestL1ToL2Integration:
+    """L1→L2接口契约测试：验证L1返回的retrieval_config嵌套结构能正确传给L2"""
+
+    def test_l1_directive_result_feeds_l2_correctly(self):
+        """L1 directive skill的retrieval_config（嵌套结构）应能被L2 retriever正确读取"""
+        from evoroute_rag.layer1 import SkillMatcher
+        from evoroute_rag.layer2.langgraph_pipeline import build_graph
+        from unittest.mock import MagicMock
+
+        # 1. L1获取一个directive类型的skill
+        matcher = SkillMatcher(skill_library_path="skills")
+        result = matcher.match("保研需要什么条件")
+
+        # 2. 确认L1返回的是directive类型，有retrieval_config
+        assert result is not None
+        assert result.answer_type == "directive"
+        assert result.retrieval_config is not None
+        # 3. 确认嵌套结构（契约点：L1输出与L2期望格式一致）
+        assert "retrieval" in result.retrieval_config
+        retrieval_cfg = result.retrieval_config["retrieval"]
+        assert "top_k" in retrieval_cfg
+        assert "boost_keywords" in retrieval_cfg
+
+        # 4. 将L1的retrieval_config直接作为skill_config传入L2
+        mock_llm = MagicMock()
+        mock_llm.call.side_effect = [
+            "type: factual_query\nconfidence: 0.85",
+            "保研需要满足以下条件：\n1. 成绩优秀\n2. 无违纪记录\n3. 英语四级通过",
+        ]
+
+        mock_retriever = MagicMock()
+        mock_retriever.search.return_value = _make_mock_docs(
+            [0.88, 0.82, 0.75],
+            ["保研政策介绍", "保研资格条件", "保研流程说明"],
+        )
+
+        graph = build_graph(mock_llm, mock_retriever)
+        from evoroute_rag.layer2.langgraph_pipeline import AgenticRAGState
+
+        initial_state: AgenticRAGState = {
+            "query": "保研需要什么条件",
+            "query_type": "",
+            "router_confidence": 0.0,
+            "skill_config": result.retrieval_config,  # L1直接传L2
+            "retrieved_docs": [],
+            "mean_similarity": 0.0,
+            "top1_margin": 0.0,
+            "doc_agreement": 0.0,
+            "coverage_score": 0.0,
+            "quality_score": 0.0,
+            "reretrieve_count": 0,
+            "attribution_evidence": {},
+            "final_answer": "",
+        }
+
+        final_state = graph.invoke(initial_state)
+
+        # 5. 验证L2正确处理了L1传来的skill_config
+        assert final_state["final_answer"] is not None
+        assert "attribution_evidence" in final_state
+        assert mock_retriever.search.called

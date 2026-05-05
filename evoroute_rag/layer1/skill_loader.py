@@ -195,7 +195,8 @@ def load_skills(skill_library_path: str, synonym_dict_path: str = "") -> dict[st
         Dict mapping skill_id to Skill for all active skills.
     """
     global _SYNONYM_DICT_LOADED
-    _SYNONYM_DICT_LOADED = False  # reset for hot-reload
+    _SYNONYM_DICT = {}  # 清空旧值，防止残留污染
+    _SYNONYM_DICT_LOADED = False
 
     if synonym_dict_path:
         _load_synonym_dict(synonym_dict_path)

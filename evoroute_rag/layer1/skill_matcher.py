@@ -72,9 +72,11 @@ class SkillMatcher:
         retrieval_dict = None
         if skill.retrieval_config:
             retrieval_dict = {
-                "boost_keywords": skill.retrieval_config.boost_keywords,
-                "filter_metadata": skill.retrieval_config.filter_metadata,
-                "top_k": skill.retrieval_config.top_k,
+                "retrieval": {
+                    "boost_keywords": skill.retrieval_config.boost_keywords,
+                    "filter_metadata": skill.retrieval_config.filter_metadata,
+                    "top_k": skill.retrieval_config.top_k,
+                }
             }
 
         return SkillMatchResult(
@@ -135,7 +137,6 @@ class SkillMatcher:
             "base_score": 1.0,
             "final_score": 1.0,
         }
-        return None
 
     def match(self, query: str) -> Optional[SkillMatchResult]:
         """Match a query against the skill library.
