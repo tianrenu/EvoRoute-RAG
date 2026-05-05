@@ -13,12 +13,13 @@ answer_template: "贫困生认定申请流程：\n1. 准备材料：\n   - 《�
   5. 学校公示：公示5个工作日，无异议后认定生效\n认定等级分为：特别困难、困难、一般困难三档。\n"
 answer_type: template
 created_at: 2026-04-10
+# ⚠️ 冷启动工程预设值：hit_count/success_rate 为 Phase 1 模拟数据，实验阶段用真实日志替换
 evolution:
   depends_on: []
   false_positive_count: 0
-  hit_count: 50
+  hit_count: 50          # 冷启动工程预设值，实验时替换
   last_evolution_time: null
-  success_rate: 0.85
+  success_rate: 0.85    # 冷启动工程预设值，实验时替换
 id: poverty_identification_001
 match_threshold: 0.25
 name: 贫困生认定申请流程

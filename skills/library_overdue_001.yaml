@@ -20,12 +20,13 @@ answer_template: '图书馆借书超期处理流程如下：
   '
 answer_type: template
 created_at: 2026-04-10
+# ⚠️ 冷启动工程预设值：hit_count/success_rate 为 Phase 1 模拟数据，实验阶段用真实日志替换
 evolution:
   depends_on: []
   false_positive_count: 0
-  hit_count: 50
+  hit_count: 50          # 冷启动工程预设值，实验时替换
   last_evolution_time: null
-  success_rate: 0.85
+  success_rate: 0.85    # 冷启动工程预设值，实验时替换
 id: library_overdue_001
 match_threshold: 0.25
 name: 图书馆借书超期处理
